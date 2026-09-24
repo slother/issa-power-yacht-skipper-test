@@ -80,9 +80,9 @@ function render(){
  $('progressbar').style.width=`${answered/indices.length*100}%`;
  $('topic-name').textContent=q.topic;
  $('question').textContent=q.q;
- const fig=$('sign-figure');fig.hidden=!q.image;
- if(q.image){$('sign-image').src=q.image;$('sign-image').alt=q.alt||''}
  const revealed=checked[current]||isFinished();
+ const fig=$('sign-figure');fig.hidden=!q.image||(q.imageAfterCheck&&!revealed);
+ if(q.image){$('sign-image').src=q.image;$('sign-image').alt=q.alt||''}
  const box=$('choices');box.innerHTML='';
  optionOrders[current].forEach((sourceIndex,displayIndex)=>{
   const v=q.options[sourceIndex];
