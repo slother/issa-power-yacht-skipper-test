@@ -4,14 +4,25 @@
 const A=['A','B','C','D'];
 const $=id=>document.getElementById(id);
 const copy={
-  pl:{studyNotice:'To nie jest oficjalny egzamin ISSA. To test przygotowawczy, który pomaga w nauce i powtórce materiału.',footer:'Przygotował: Bartłomiej Przytarski',topicLabel:'Zakres testu',topicsAria:'Tematy pytań',source:'Pytania opracowane na podstawie podręcznika ISSA Inland Power Yacht Skipper (wyd. 2020). Materiał służy do nauki i nie zastępuje zajęć praktycznych.',quizTitle:'Test ABCD',intro:'Zaznacz jedną odpowiedź przy każdym pytaniu. Kliknij „Sprawdź odpowiedź”, aby od razu zobaczyć poprawną odpowiedź i wyjaśnienie.',resultLabel:'Podsumowanie testu',resultTitle:'Twój wynik',previous:'Poprzednie',check:'Sprawdź odpowiedź',checked:'Sprawdzone',next:'Następne',finish:'Zakończ test',seeResult:'Zobacz wynik',review:'Przejrzyj odpowiedzi',restart:'Rozwiąż ponownie',reset:'Zresetuj cały test',resetTitle:'Zresetować cały test?',resetDescription:'Wszystkie odpowiedzi i sprawdzenia zostaną usunięte. Tej czynności nie można cofnąć.',resetCancel:'Anuluj',resetConfirm:'Tak, zresetuj',correct:'Dobrze!',correctAnswer:'Poprawna odpowiedź: ',page:'Podręcznik: strona PDF ',question:n=>`Pytanie ${n} z ${questions.length}`,answered:n=>`Odpowiedziano: ${n}`,score:(percent,blank)=>`${percent}% poprawnych odpowiedzi · ${blank} bez odpowiedzi. Kliknij pytanie, aby zobaczyć wyjaśnienie.`,title:'ISSA Inland Power Yacht Skipper — test ABCD',description:'Interaktywny test ABCD do nauki na ISSA Inland Power Yacht Skipper.'},
-  en:{studyNotice:'This is not an official ISSA exam. This practice quiz helps you study and review the course material.',footer:'Created by Bartłomiej Przytarski',topicLabel:'Quiz topics',topicsAria:'Question topics',source:'Questions based on the ISSA Inland Power Yacht Skipper textbook (2020). This practice material does not replace practical training.',quizTitle:'ABCD Practice Quiz',intro:'Choose one answer for each question. Select “Check answer” to see the correct answer and explanation immediately.',resultLabel:'Quiz summary',resultTitle:'Your score',previous:'Previous',check:'Check answer',checked:'Checked',next:'Next',finish:'Finish quiz',seeResult:'See results',review:'Review answers',restart:'Try again',reset:'Reset entire quiz',resetTitle:'Reset the entire quiz?',resetDescription:'All answers and checked questions will be cleared. This cannot be undone.',resetCancel:'Cancel',resetConfirm:'Yes, reset',correct:'Correct!',correctAnswer:'Correct answer: ',page:'Textbook: PDF page ',question:n=>`Question ${n} of ${questions.length}`,answered:n=>`Answered: ${n}`,score:(percent,blank)=>`${percent}% correct · ${blank} unanswered. Select a question to see its explanation.`,title:'ISSA Inland Power Yacht Skipper — ABCD practice quiz',description:'Interactive ABCD practice quiz for ISSA Inland Power Yacht Skipper.'}
+  pl:{studyNotice:'To nie jest oficjalny egzamin ISSA. To test przygotowawczy, który pomaga w nauce i powtórce materiału.',footer:'Przygotował: Bartłomiej Przytarski',topicLabel:'Zakres testu',topicsAria:'Tematy pytań',source:'Pytania opracowane na podstawie podręcznika ISSA Inland Power Yacht Skipper (wyd. 2020). Materiał służy do nauki i nie zastępuje zajęć praktycznych.',quizTitle:'Test ABCD',intro:'Zaznacz jedną odpowiedź przy każdym pytaniu. Kolejność odpowiedzi A–D jest losowana przy rozpoczęciu i po resecie testu. Kliknij „Sprawdź odpowiedź”, aby od razu zobaczyć poprawną odpowiedź i wyjaśnienie.',resultLabel:'Podsumowanie testu',resultTitle:'Twój wynik',previous:'Poprzednie',check:'Sprawdź odpowiedź',checked:'Sprawdzone',next:'Następne',finish:'Zakończ test',seeResult:'Zobacz wynik',review:'Przejrzyj odpowiedzi',restart:'Rozwiąż ponownie',reset:'Zresetuj cały test',resetTitle:'Zresetować cały test?',resetDescription:'Wszystkie odpowiedzi i sprawdzenia zostaną usunięte. Tej czynności nie można cofnąć.',resetCancel:'Anuluj',resetConfirm:'Tak, zresetuj',correct:'Dobrze!',correctAnswer:'Poprawna odpowiedź: ',page:'Podręcznik: strona PDF ',question:n=>`Pytanie ${n} z ${questions.length}`,answered:n=>`Odpowiedziano: ${n}`,score:(percent,blank)=>`${percent}% poprawnych odpowiedzi · ${blank} bez odpowiedzi. Kliknij pytanie, aby zobaczyć wyjaśnienie.`,title:'ISSA Inland Power Yacht Skipper — test ABCD',description:'Interaktywny test ABCD do nauki na ISSA Inland Power Yacht Skipper.'},
+  en:{studyNotice:'This is not an official ISSA exam. This practice quiz helps you study and review the course material.',footer:'Created by Bartłomiej Przytarski',topicLabel:'Quiz topics',topicsAria:'Question topics',source:'Questions based on the ISSA Inland Power Yacht Skipper textbook (2020). This practice material does not replace practical training.',quizTitle:'ABCD Practice Quiz',intro:'Choose one answer for each question. The A–D answer order is shuffled when the quiz starts and after a reset. Select “Check answer” to see the correct answer and explanation immediately.',resultLabel:'Quiz summary',resultTitle:'Your score',previous:'Previous',check:'Check answer',checked:'Checked',next:'Next',finish:'Finish quiz',seeResult:'See results',review:'Review answers',restart:'Try again',reset:'Reset entire quiz',resetTitle:'Reset the entire quiz?',resetDescription:'All answers and checked questions will be cleared. This cannot be undone.',resetCancel:'Cancel',resetConfirm:'Yes, reset',correct:'Correct!',correctAnswer:'Correct answer: ',page:'Textbook: PDF page ',question:n=>`Question ${n} of ${questions.length}`,answered:n=>`Answered: ${n}`,score:(percent,blank)=>`${percent}% correct · ${blank} unanswered. Select a question to see its explanation.`,title:'ISSA Inland Power Yacht Skipper — ABCD practice quiz',description:'Interactive ABCD practice quiz for ISSA Inland Power Yacht Skipper.'}
 };
 let language='pl';
 try{if(localStorage.getItem('issa-quiz-language')==='en')language='en'}catch(e){}
 let current=0,finished=false;
 const answers=Array(questions.length).fill(null);
 const checked=Array(questions.length).fill(false);
+function shuffledOptionOrders(){
+ return questions.map(q=>{
+  const order=q.options.map((_,i)=>i);
+  for(let i=order.length-1;i>0;i--){
+   const j=Math.floor(Math.random()*(i+1));
+   [order[i],order[j]]=[order[j],order[i]];
+  }
+  return order;
+ });
+}
+let optionOrders=shuffledOptionOrders();
 const topics=[...new Set(questions.map(q=>q.topic))];
 const activeQuestions=()=>language==='en'?questionsEn:questions;
 const ui=()=>copy[language];
@@ -50,20 +61,22 @@ function render(){
  if(q.image){$('sign-image').src=q.image;$('sign-image').alt=q.alt||''}
  const revealed=checked[current]||finished;
  const box=$('choices');box.innerHTML='';
- q.options.forEach((v,i)=>{
+ optionOrders[current].forEach((sourceIndex,displayIndex)=>{
+  const v=q.options[sourceIndex];
   const b=document.createElement('button');
-  b.className='choice'+(answers[current]===i?' selected':'')+(revealed&&i===q.correct?' correct':'')+(revealed&&answers[current]===i&&i!==q.correct?' incorrect':'');
-  b.setAttribute('aria-pressed',answers[current]===i?'true':'false');
-  const letter=document.createElement('span');letter.className='letter';letter.textContent=A[i];
+  b.className='choice'+(answers[current]===sourceIndex?' selected':'')+(revealed&&sourceIndex===q.correct?' correct':'')+(revealed&&answers[current]===sourceIndex&&sourceIndex!==q.correct?' incorrect':'');
+  b.setAttribute('aria-pressed',answers[current]===sourceIndex?'true':'false');
+  const letter=document.createElement('span');letter.className='letter';letter.textContent=A[displayIndex];
   const value=document.createElement('span');value.textContent=v;b.append(letter,value);
-  b.onclick=()=>{if(revealed)return;answers[current]=i;render()};box.append(b);
+  b.onclick=()=>{if(revealed)return;answers[current]=sourceIndex;render()};box.append(b);
  });
  const f=$('feedback');f.hidden=!revealed;
  if(revealed){
   f.innerHTML='';const strong=document.createElement('strong');
-  strong.textContent=answers[current]===q.correct?t.correct:t.correctAnswer+A[q.correct];
+  const correctLetter=A[optionOrders[current].indexOf(q.correct)];
+  strong.textContent=answers[current]===q.correct?t.correct:t.correctAnswer+correctLetter;
   const explanation=document.createElement('span');explanation.textContent=q.why;
-  const br=document.createElement('br');const small=document.createElement('small');small.textContent=t.page+q.page;
+  const br=document.createElement('br');const small=document.createElement('small');small.textContent=q.source||t.page+q.page;
   f.append(strong,explanation,br,small);
  }
  $('prev').disabled=current===0;$('check').hidden=finished;
@@ -97,7 +110,7 @@ $('check').onclick=()=>{if(answers[current]===null||checked[current]||finished)r
 $('prev').onclick=()=>{if(current>0){current--;render();scrollTo(0,0)}};
 $('next').onclick=()=>{if(current<questions.length-1){current++;render();scrollTo(0,0)}else showResult()};
 $('review').onclick=()=>{current=0;showQuiz();render();scrollTo(0,0)};
-function resetQuiz(){answers.fill(null);checked.fill(false);finished=false;current=0;showQuiz();render();scrollTo(0,0)}
+function resetQuiz(){answers.fill(null);checked.fill(false);optionOrders=shuffledOptionOrders();finished=false;current=0;showQuiz();render();scrollTo(0,0)}
 function openResetDialog(){$('reset-dialog').showModal()}
 $('reset').onclick=openResetDialog;$('restart').onclick=openResetDialog;
 $('reset-cancel').onclick=()=>$('reset-dialog').close();
