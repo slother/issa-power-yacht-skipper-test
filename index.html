@@ -4,8 +4,8 @@
 const A=['A','B','C','D'];
 const $=id=>document.getElementById(id);
 const copy={
-  pl:{studyNotice:'To nie jest oficjalny egzamin ISSA. To test przygotowawczy, który pomaga w nauce i powtórce materiału.',footer:'Przygotował: Bartłomiej Przytarski',topicLabel:'Sekcje',topicsAria:'Sekcje pytań',sectionLabel:'Wybierz sekcję',source:'Pytania opracowane na podstawie podręcznika ISSA Inland Power Yacht Skipper (wyd. 2020). Materiał służy do nauki i nie zastępuje zajęć praktycznych.',quizTitle:'Test ABCD',intro:'Wybierz sekcję i rozwiązuj ją oddzielnie. Kolejność odpowiedzi A–D jest losowana przy rozpoczęciu i po resecie sekcji. Kliknij „Sprawdź odpowiedź”, aby od razu zobaczyć wyjaśnienie.',resultLabel:'Podsumowanie sekcji',resultTitle:'Wynik sekcji',reviewPagesTitle:'Strony do powtórki',reviewPagesIntro:'Na podstawie błędnych i pominiętych odpowiedzi:',pdfPage:'Strona PDF ',otherSource:'Źródło: ',unspecifiedSource:'materiał dodatkowy',reviewQuestions:'pytania',previous:'Poprzednie',check:'Sprawdź odpowiedź',checked:'Sprawdzone',next:'Następne',finish:'Zakończ sekcję',seeResult:'Zobacz wynik',review:'Przejrzyj odpowiedzi',restart:'Rozwiąż ponownie',reset:'Zresetuj tę sekcję',resetTitle:'Zresetować tę sekcję?',resetDescription:'Odpowiedzi i sprawdzenia w tej sekcji zostaną usunięte. Pozostałe sekcje zachowają swój postęp.',resetCancel:'Anuluj',resetConfirm:'Tak, zresetuj',correct:'Dobrze!',correctAnswer:'Poprawna odpowiedź: ',page:'Podręcznik: strona PDF ',question:(n,total)=>`Pytanie ${n} z ${total}`,answered:(n,total)=>`Odpowiedziano: ${n}/${total}`,score:(percent,blank)=>`${percent}% poprawnych odpowiedzi · ${blank} bez odpowiedzi. Kliknij pytanie, aby zobaczyć wyjaśnienie.`,title:'ISSA Inland Power Yacht Skipper — test ABCD',description:'Interaktywny test ABCD do nauki na ISSA Inland Power Yacht Skipper.'},
-  en:{studyNotice:'This is not an official ISSA exam. This practice quiz helps you study and review the course material.',footer:'Created by Bartłomiej Przytarski',topicLabel:'Sections',topicsAria:'Question sections',sectionLabel:'Choose a section',source:'Questions based on the ISSA Inland Power Yacht Skipper textbook (2020). This practice material does not replace practical training.',quizTitle:'ABCD Practice Quiz',intro:'Choose a section and complete it separately. The A–D answer order is shuffled at the start and after a section reset. Select “Check answer” to see the explanation immediately.',resultLabel:'Section summary',resultTitle:'Section score',reviewPagesTitle:'Pages to review',reviewPagesIntro:'Based on incorrect and unanswered questions:',pdfPage:'PDF page ',otherSource:'Source: ',unspecifiedSource:'additional material',reviewQuestions:'questions',previous:'Previous',check:'Check answer',checked:'Checked',next:'Next',finish:'Finish section',seeResult:'See results',review:'Review answers',restart:'Try again',reset:'Reset this section',resetTitle:'Reset this section?',resetDescription:'Answers and checks in this section will be cleared. Progress in other sections will be kept.',resetCancel:'Cancel',resetConfirm:'Yes, reset',correct:'Correct!',correctAnswer:'Correct answer: ',page:'Textbook: PDF page ',question:(n,total)=>`Question ${n} of ${total}`,answered:(n,total)=>`Answered: ${n}/${total}`,score:(percent,blank)=>`${percent}% correct · ${blank} unanswered. Select a question to see its explanation.`,title:'ISSA Inland Power Yacht Skipper — ABCD practice quiz',description:'Interactive ABCD practice quiz for ISSA Inland Power Yacht Skipper.'}
+  pl:{studyNotice:'To nie jest oficjalny egzamin ISSA. To test przygotowawczy, który pomaga w nauce i powtórce materiału.',footer:'Przygotował: Bartłomiej Przytarski',topicLabel:'Sekcje',topicsAria:'Sekcje pytań',sectionLabel:'Wybierz sekcję',source:'Pytania opracowane na podstawie podręcznika ISSA Inland Power Yacht Skipper (wyd. 2020). Materiał służy do nauki i nie zastępuje zajęć praktycznych.',quizTitle:'Test ABCD',intro:'Wybierz sekcję i rozwiązuj ją oddzielnie. Kolejność pytań i odpowiedzi A–D jest losowana przy rozpoczęciu i po resecie sekcji. Kliknij „Sprawdź odpowiedź”, aby od razu zobaczyć wyjaśnienie.',resultLabel:'Podsumowanie sekcji',resultTitle:'Wynik sekcji',reviewPagesTitle:'Strony do powtórki',reviewPagesIntro:'Na podstawie błędnych i pominiętych odpowiedzi:',pdfPage:'Strona PDF ',otherSource:'Źródło: ',unspecifiedSource:'materiał dodatkowy',reviewQuestions:'pytania',previous:'Poprzednie',check:'Sprawdź odpowiedź',checked:'Sprawdzone',next:'Następne',finish:'Zakończ sekcję',seeResult:'Zobacz wynik',review:'Przejrzyj odpowiedzi',restart:'Rozwiąż ponownie',reset:'Zresetuj tę sekcję',resetTitle:'Zresetować tę sekcję?',resetDescription:'Odpowiedzi i sprawdzenia w tej sekcji zostaną usunięte. Pozostałe sekcje zachowają swój postęp.',resetCancel:'Anuluj',resetConfirm:'Tak, zresetuj',correct:'Dobrze!',correctAnswer:'Poprawna odpowiedź: ',page:'Podręcznik: strona PDF ',question:(n,total)=>`Pytanie ${n} z ${total}`,answered:(n,total)=>`Odpowiedziano: ${n}/${total}`,score:(percent,blank)=>`${percent}% poprawnych odpowiedzi · ${blank} bez odpowiedzi. Kliknij pytanie, aby zobaczyć wyjaśnienie.`,title:'ISSA Inland Power Yacht Skipper — test ABCD',description:'Interaktywny test ABCD do nauki na ISSA Inland Power Yacht Skipper.'},
+  en:{studyNotice:'This is not an official ISSA exam. This practice quiz helps you study and review the course material.',footer:'Created by Bartłomiej Przytarski',topicLabel:'Sections',topicsAria:'Question sections',sectionLabel:'Choose a section',source:'Questions based on the ISSA Inland Power Yacht Skipper textbook (2020). This practice material does not replace practical training.',quizTitle:'ABCD Practice Quiz',intro:'Choose a section and complete it separately. Question order and the A–D answer order are shuffled at the start and after a section reset. Select “Check answer” to see the explanation immediately.',resultLabel:'Section summary',resultTitle:'Section score',reviewPagesTitle:'Pages to review',reviewPagesIntro:'Based on incorrect and unanswered questions:',pdfPage:'PDF page ',otherSource:'Source: ',unspecifiedSource:'additional material',reviewQuestions:'questions',previous:'Previous',check:'Check answer',checked:'Checked',next:'Next',finish:'Finish section',seeResult:'See results',review:'Review answers',restart:'Try again',reset:'Reset this section',resetTitle:'Reset this section?',resetDescription:'Answers and checks in this section will be cleared. Progress in other sections will be kept.',resetCancel:'Cancel',resetConfirm:'Yes, reset',correct:'Correct!',correctAnswer:'Correct answer: ',page:'Textbook: PDF page ',question:(n,total)=>`Question ${n} of ${total}`,answered:(n,total)=>`Answered: ${n}/${total}`,score:(percent,blank)=>`${percent}% correct · ${blank} unanswered. Select a question to see its explanation.`,title:'ISSA Inland Power Yacht Skipper — ABCD practice quiz',description:'Interactive ABCD practice quiz for ISSA Inland Power Yacht Skipper.'}
 };
 let language='pl';
 try{if(localStorage.getItem('issa-quiz-language')==='en')language='en'}catch(e){}
@@ -13,18 +13,23 @@ let current=0;
 const answers=Array(questions.length).fill(null);
 const checked=Array(questions.length).fill(false);
 const finishedTopics=new Set();
-function shuffledOptions(q){
- const order=q.options.map((_,i)=>i);
+function shuffledOrder(items,previous){
+ const order=[...items];
  for(let i=order.length-1;i>0;i--){
   const j=Math.floor(Math.random()*(i+1));
   [order[i],order[j]]=[order[j],order[i]];
  }
+ if(previous&&order.length>1&&order.every((value,i)=>value===previous[i])){
+  [order[0],order[1]]=[order[1],order[0]];
+ }
  return order;
 }
-function shuffledOptionOrders(){return questions.map(shuffledOptions)}
+function shuffledOptions(q,previous){return shuffledOrder(q.options.map((_,i)=>i),previous)}
+function shuffledOptionOrders(){return questions.map(q=>shuffledOptions(q))}
 let optionOrders=shuffledOptionOrders();
 const topics=[...new Set(questions.map(q=>q.topic))];
-const topicIndices=new Map(topics.map(topic=>[topic,questions.map((q,i)=>q.topic===topic?i:-1).filter(i=>i!==-1)]));
+const topicIndices=new Map(topics.map(topic=>[topic,shuffledOrder(questions.map((q,i)=>q.topic===topic?i:-1).filter(i=>i!==-1))]));
+current=topicIndices.get(topics[0])[0];
 const currentTopic=()=>questions[current].topic;
 const currentSection=()=>topicIndices.get(currentTopic());
 const isFinished=()=>finishedTopics.has(currentTopic());
@@ -156,8 +161,9 @@ $('next').onclick=()=>{const indices=currentSection(),position=indices.indexOf(c
 $('review').onclick=()=>{current=currentSection()[0];showQuiz();render();scrollTo(0,0)};
 function resetSection(){
  const topic=currentTopic(),indices=currentSection();
- indices.forEach(i=>{answers[i]=null;checked[i]=false;optionOrders[i]=shuffledOptions(questions[i])});
- finishedTopics.delete(topic);current=indices[0];showQuiz();render();scrollTo(0,0);
+ indices.forEach(i=>{answers[i]=null;checked[i]=false;optionOrders[i]=shuffledOptions(questions[i],optionOrders[i])});
+ topicIndices.set(topic,shuffledOrder(indices,indices));
+ finishedTopics.delete(topic);current=currentSection()[0];showQuiz();render();scrollTo(0,0);
 }
 function openResetDialog(){$('reset-dialog').showModal()}
 $('reset').onclick=openResetDialog;$('restart').onclick=openResetDialog;
